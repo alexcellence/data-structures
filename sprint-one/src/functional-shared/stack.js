@@ -12,10 +12,8 @@ var Stack = function() {
   // use extend to point to new methods so they aren't duplicated in new objects
   _.extend(obj, stackMethods);
 
-
   // return obj
   return obj;
-
 };
 
 var stackMethods = {
