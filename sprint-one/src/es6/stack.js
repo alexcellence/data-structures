@@ -9,7 +9,7 @@ class Stack {
   push(value) {
     this.counter++;
     this.storage[value] = value;
-  };
+  }
 
   pop() {
     var keys = Object.keys(this.storage);
@@ -20,10 +20,10 @@ class Stack {
     }
     delete this.storage[lastKey];
     return popped;
-  };
+  }
 
   size() {
     return this.counter;
-  };
+  }
 
 }

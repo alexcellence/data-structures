@@ -9,7 +9,7 @@ class Queue {
   enqueue(value) {
     this.counter++;
     this.storage[value] = value;
-  };
+  }
 
   dequeue() {
     var keys = Object.keys(this.storage);
@@ -20,10 +20,10 @@ class Queue {
     }
     delete this.storage[firstKey];
     return dequeued;
-  };
+  }
 
   size() {
     return this.counter;
-  };
+  }
 
 }
