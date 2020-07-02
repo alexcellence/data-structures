@@ -12,7 +12,6 @@ var Queue = function() {
     // add a string to the back of the queue
     counter++;
     storage[counter] = value;
-    console.log('enqueue ' , storage, Object.keys(storage));
   };
 
   someInstance.dequeue = function() {
