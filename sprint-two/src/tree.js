@@ -70,11 +70,11 @@ treeMethods.contains = function(target) {
 
 // let tree = new Tree(1);
 // console.log(tree);
-let tree = new Tree(1);
-tree.addChild(2);
-tree.addChild(3);
-tree.children[0].addChild(4);
-tree.children[1].addChild(5);
-tree.children[1].children[0].addChild(6);
-console.log(tree.contains(6));
-console.log(tree);
+// let tree = new Tree(1);
+// tree.addChild(2);
+// tree.addChild(3);
+// tree.children[0].addChild(4);
+// tree.children[1].addChild(5);
+// tree.children[1].children[0].addChild(6);
+// console.log(tree.contains(6));
+// console.log(tree);
