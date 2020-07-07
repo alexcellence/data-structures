@@ -41,4 +41,17 @@ describe('tree', function() {
     expect(tree.contains(8)).to.equal(true);
   });
 
+  it('should traverse tree with callback function', function() {
+    let timesThree = function (number) { return number * 3; };
+    tree.addChild(5);
+    tree.addChild(6);
+    tree.traverse(timesThree);
+    expect(tree.contains(15)).to.equal(true);
+  });
+
+  it('should detect parent', function() {
+    tree.addChild(5);
+    tree.children[0].addChild(6);
+    expect(tree.children[0].children[0].parent).to.equal(5);
+  });
 });

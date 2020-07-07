@@ -2,7 +2,7 @@ var Tree = function(value) {
   var newTree = {};
   _.extend(newTree, treeMethods);
   newTree.value = value;
-
+  newTree.parent = null;
   // your code here
   newTree.children = [];// fix me
 
@@ -11,11 +11,56 @@ var Tree = function(value) {
 
 var treeMethods = {};
 
+treeMethods.removeFromParent = function () {
+
+
+  this.parent = null;
+
+};
+
+treeMethods.traverse = function (cb) {
+
+  if (this.value === undefined && this.children.length > 0) {
+
+    for (let i = 0; i < this.children.length; i ++) {
+      this.children[i].value = cb(this.children[i].value);
+      console.log(this.children[i].value);
+      if (this.children[i].children.length > 0) {
+        this.children[i].traverse(cb);
+      }
+    }
+  }
+
+  //   cb (this.value)
+  //   for (let i = 0; i < this.children.length; i ++) {
+  //      this.children[i].traverse(cb);
+  //   }
+
+
+  //   for (let i = 0; i < node.children.length; i ++) {
+  //     let child = node.children[i];
+
+  //     if (node.children === 0) {
+  //       node.value = cb(node.value);
+  //     }
+  //     if (child.children.length > 0) {
+
+  //       return traverse(cb, children[i]);
+  //     } else {
+  //       child.value = cb(child.value);
+  //     }
+  //   }
+  // }
+  // // debugger;
+  // this.traverse(cb, this);
+};
+
 treeMethods.addChild = function(value) {
   // create new instance of Tree
   // push newTree into this.children
 
   let tree = new Tree(value);
+  tree.parent = this.value;
   this.children.push(tree);
 };
 
@@ -48,7 +93,6 @@ treeMethods.contains = function(target) {
   // };
 
   // return containsTarget(this);
-
   if (this.value === target) {
     return true;
   }

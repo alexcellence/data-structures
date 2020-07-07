@@ -2,6 +2,7 @@ var LinkedList = function() {
   var list = {};
   list.head = null;
   list.tail = null;
+  list.nodes = 0;
 
   list.addToTail = function(value) {
 
@@ -15,6 +16,7 @@ var LinkedList = function() {
       this.tail = node;
     }
 
+    this.nodes += 1;
     return this;
   };
 
@@ -22,6 +24,7 @@ var LinkedList = function() {
 
     let removed = this.head.value;
     this.head = this.head.next;
+    this.nodes -= 1;
     return removed;
 
   };
