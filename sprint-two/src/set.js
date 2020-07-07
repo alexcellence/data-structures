@@ -11,11 +11,12 @@ setPrototype.add = function(item) {
 };
 
 setPrototype.contains = function(item) {
-  if (this._storage[item]) {
-    return true;
-  } else {
-    return false;
-  }
+  // if (this._storage[item]) {
+  //   return true;
+  // } else {
+  //   return false;
+  // }
+  return this._storage[item] ? true : false;
 };
 
 setPrototype.remove = function(item) {

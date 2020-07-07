@@ -12,8 +12,7 @@ HashTable.prototype.insert = function(k, v) {
   var tuple = [k, v];
 
   if (this._storage[index] === undefined) {
-    this._storage[index] = [];
-    this._storage[index].push(tuple);
+    this._storage[index] = [tuple];
   } else if (this._storage[index]) {
     for (let i = 0; i < this._storage[index].length; i ++) {
       let bucket = this._storage[index][i];
@@ -30,9 +29,6 @@ HashTable.prototype.insert = function(k, v) {
     this._limit *= 2;
     this.rehash(this._limit);
   }
-
-  // check if tuples/limit > 75
-  // if true, double limit
 
   //
   // if (this._storage[index].length === 0) {
@@ -92,39 +88,9 @@ HashTable.prototype.remove = function(k) {
     this._limit = Math.floor(this._limit / 2);
     this.rehash(this._limit);
   }
-
-
-  // delete this._storage[index];
-
-  // check if tuples/limit < 25%
-  // if so, halve limit
-
-
 };
 
 HashTable.prototype.rehash = function (limit) {
-  // let newStorage = [];
-  // console.log(this._storage);
-  // for (let key in this._storage) { // for key in loop
-  //   console.log(this._storage);
-
-  //   let bucket = this._storage[key];
-  //   for (let j = 0; j < bucket.length; j ++) {
-  //     var index = getIndexBelowMaxForKey(bucket[j][0], limit);
-  //     var tuple = [bucket[j][0], bucket[j][1]];
-  //     console.log(tuple);
-  //     if (newStorage[index] === undefined) {
-  //       newStorage[index] = [];
-  //       newStorage[index].push(tuple);
-  //     } else {
-  //       newStorage[index].push(tuple);
-  //     }
-  //   }
-  //   console.log(newStorage);
-  //   this._storage = newStorage.slice();
-
-  // }
-
 
   let newHashTable = new HashTable();
 
@@ -135,8 +101,7 @@ HashTable.prototype.rehash = function (limit) {
         let newIndex = getIndexBelowMaxForKey(bucket[i][0], limit);
         var tuple = [bucket[i][0], bucket[i][1]];
         if (newHashTable._storage[newIndex] === undefined) {
-          newHashTable._storage[newIndex] = [];
-          newHashTable._storage[newIndex].push(tuple);
+          newHashTable._storage[newIndex] = [tuple];
         } else {
           newHashTable._storage[newIndex].push(tuple);
         }
@@ -145,7 +110,6 @@ HashTable.prototype.rehash = function (limit) {
   }
   this._storage = newHashTable._storage;
 };
-
 
 
 
@@ -174,3 +138,26 @@ HashTable.prototype.rehash = function (limit) {
 // create newHashTable
 // iterate over storage using for in loop
 //
+
+// rehash work
+// let newStorage = [];
+// console.log(this._storage);
+// for (let key in this._storage) { // for key in loop
+//   console.log(this._storage);
+
+//   let bucket = this._storage[key];
+//   for (let j = 0; j < bucket.length; j ++) {
+//     var index = getIndexBelowMaxForKey(bucket[j][0], limit);
+//     var tuple = [bucket[j][0], bucket[j][1]];
+//     console.log(tuple);
+//     if (newStorage[index] === undefined) {
+//       newStorage[index] = [];
+//       newStorage[index].push(tuple);
+//     } else {
+//       newStorage[index].push(tuple);
+//     }
+//   }
+//   console.log(newStorage);
+//   this._storage = newStorage.slice();
+
+// }

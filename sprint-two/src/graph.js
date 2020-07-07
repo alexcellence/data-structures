@@ -9,7 +9,6 @@ var Graph = function() {
 
 // Add a node to the graph, passing in the node's value.
 Graph.prototype.addNode = function(value) {
-
   // var node = { value: value, edges: {} };
   // this.storage.node = node;
   this.storage[value] = { value: value, edges: {} };
@@ -31,12 +30,8 @@ Graph.prototype.removeNode = function(node) {
 
 // Returns a boolean indicating whether two specified nodes are connected.  Pass in the values contained in each of the two nodes.
 Graph.prototype.hasEdge = function(fromNode, toNode) {
-  if (this.storage[fromNode].edges[toNode] !== undefined) {
-    // {storage: { 1: {val: 1, edge {} }, 2: {val:2, edge{} } }}
-    return true;
-  } else {
-    return false;
-  }
+  return this.storage[fromNode].edges[toNode] !== undefined ? true : false;
+  // {storage: { 1: {val: 1, edge {} }, 2: {val:2, edge{} } }}
 };
 
 // Connects two nodes in a graph by adding an edge between them.
@@ -47,7 +42,7 @@ Graph.prototype.addEdge = function(fromNode, toNode) {
 
 // Remove an edge between any two specified (by value) nodes.
 Graph.prototype.removeEdge = function(fromNode, toNode) {
-  delete this.storage[fromNode].edges[toNode]; // {val 4, edge{5]}, {val 5, edge{4] }}}
+  delete this.storage[fromNode].edges[toNode];
   delete this.storage[toNode].edges[fromNode];
 };
 
@@ -56,6 +51,7 @@ Graph.prototype.forEachNode = function(cb) {
   for (let key in this.storage) {
     cb(key);
   }
+  // cb.apply(this, Object.keys(this.storage));
 };
 
 /*

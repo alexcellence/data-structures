@@ -41,6 +41,7 @@ var LinkedList = function() {
         // else return false
         return false;
       }
+      // return node.value === target ? true : node.next !== null ? checkForValue(node.next) : false;
     };
     return checkForValue(this.head);
 
